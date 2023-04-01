@@ -1,0 +1,9 @@
+import { InjectionToken } from '@angular/core';
+
+export const DEFAULT_APP_CONFIG: AppConfig = {
+  //cwtToken: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIyOTQyIiwiVXNlck5hbWUiOiJEZXZVc2VyIiwiRG9tYWluVXNlck5hbWUiOiJ0cmFkXFxEZXZVc2VyIiwiSXBBZGRyZXNzIjoiOjoxIiwianRpIjoiZmE2YTdhZDQtODVmNy00NDllLWI3MGQtMDQxN2U1OTI5ZWVmIiwiaWF0IjoiNS8xMy8yMDIwIDU6MDg6MDggUE0iLCJyb2xlcyI6WyJXYXRjaGVyTG9yZFZpZXdPbmx5IiwiV2F0Y2hlckxvcmRBZG1pbiIsIldhdGNoZXJMb3JkUmVzdGFydENsdXN0ZXIiLCJXYXRjaGVyTG9yZFJlc3RhcnRQb2QiXSwiZXhwIjoxOTIzMjg1NjAwLCJpc3MiOiJUUy5CT1dJLldFQiIsImF1ZCI6Imh0dHBzOi8vcmVmZXJlZS11aS5kZXYudHNjcnlwdG8uaW8vIn0.qRQiR2CJ7Anj9a_50dspLab-j4sqfkdYUIwrookYw10',
+  miamibullApiEndpoint: 'https://localhost:5000/api/',
+  web3ApiEndpoint: 'http://localhost:8545'
+};
+
+export let APP_CONFIG = new InjectionToken('app.config');

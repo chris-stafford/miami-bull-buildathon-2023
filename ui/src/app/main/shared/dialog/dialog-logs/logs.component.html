@@ -1,0 +1,27 @@
+<div class="modal-header">
+  <b mat-dialog-title *ngIf="config && config.title">{{config.title}}</b>
+  <button type="button" class="close" aria-label="Close" (click)="onCancelClick()">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+<div mat-dialog-content>
+
+  <span class="float-left marginBottom10px"><b>Pod: </b> {{config.podName}} | <b>Container: </b> {{config.containerName}}</span>   
+  <span class="float-right marginTop10px paddingRight10px">Possible Errors:
+    <b [matBadge]="config.errors" matBadgeColor="warn" matBadgeOverlap="false"></b>
+  </span> 
+
+  <p [innerHTML]="config.text"></p>
+                
+  <div class="logs">
+    <p *ngFor="let row of logs">{{row}}</p> 
+  </div>
+
+  <div mat-dialog-actions class="btnContainer float-right">
+    <div class="col text-right noPaddingRight">
+      <button id="btnCopyLogs" type="button"  (click)="showCopyLogsSuccessMessage()" [cdkCopyToClipboard]="logs" class="btn btn-sm btn-secondary"><fa-icon icon="copy"></fa-icon> Copy Logs</button>      
+      <button (click)="onCancelClick()" class="btn btn-sm btn-secondary">{{config.cancelText}}</button>
+    </div>
+  </div>
+  <br />
+</div>

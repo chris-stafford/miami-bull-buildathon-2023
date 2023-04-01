@@ -1,0 +1,15 @@
+<div>
+  <mat-form-field class="formFieldWidthAuto">
+    <input
+    matInput 
+    [matDatepicker]="date" 
+    [(ngModel)]="model"
+    [max]="maxDate"
+    [min]="minDate"
+    [placeholder]="title"
+    [disabled]="inputDisabled"
+    (dateChange)="onChangeEvent($event)">
+    <mat-datepicker-toggle matSuffix [for]="date"></mat-datepicker-toggle>
+    <mat-datepicker #date disabled="false"></mat-datepicker>
+  </mat-form-field>
+</div>

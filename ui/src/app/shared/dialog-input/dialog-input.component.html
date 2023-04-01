@@ -1,0 +1,12 @@
+<b mat-dialog-title>{{config.title}}</b>
+<div mat-dialog-content>
+  <p [innerHTML]="config.text"></p>
+  <mat-form-field *ngIf="config.inputEnabled" class="tp-full-width">
+    <input matInput maxlength="{{config.maxInputLength}}" [(ngModel)]="inputValue">
+    <mat-hint align="end">{{inputValue.length}} / {{config.maxInputLength}}</mat-hint>
+  </mat-form-field>
+</div>
+<div mat-dialog-actions class="float-right">
+  <button mat-button (click)="onCancelClick()"  class="btn btn-sm btn-secondary" [hidden]="config.isAlertDialog">{{config.cancelText}}</button>
+  <button mat-button (click)="onConfirmClick(inputValue)" class="btn btn-sm btn-primary" [disabled]="!isValidForm(inputValue)">{{config.confirmText}}</button>
+</div>

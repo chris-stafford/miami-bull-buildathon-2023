@@ -1,0 +1,15 @@
+<div id="wrap">
+  <div class="container-fluid main">
+    <div class="row" *ngIf="authenticationService.isAuthenticated()">
+      <div class="col"></div>
+      <div class="col-md-justified-right">
+        <a id="btnLogout" (click)="logout()" class="btn btn-default"><fa-icon icon="sign-out-alt"></fa-icon> Logout</a>  
+      </div> 
+    </div>
+    <router-outlet></router-outlet>
+    <ngx-spinner type="{{getSpinnerName()}}"></ngx-spinner>
+    <ngx-spinner type="{{getSpinnerName()}}" name="loginSpinner" ></ngx-spinner>
+    <ngx-spinner type="{{getSpinnerName()}}" name="restartSpinner" ></ngx-spinner>
+    <br />
+  </div>
+</div>

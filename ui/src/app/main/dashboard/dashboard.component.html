@@ -1,0 +1,61 @@
+<div class="titleText fade-in">
+  Miami Bull
+</div>
+<div class="row headerText fade-in">
+  <div class="col">
+    Dashboard
+  </div>
+</div>
+<div class="row fade-in">
+  <div class="col-md-6 panel">
+    <div class="chart">
+      <div class="chart-title">Actions</div>    
+      <div class="row">
+        <div class="col-md-3">
+          <button mat-raised-button color="primary" (click)="addLogin()">Add Login</button>
+        </div>
+        <div class="col-md-3">
+          <button mat-raised-button color="primary">New Trade</button>
+        </div>
+        <div class="col-md-3">
+          <button mat-raised-button color="primary" (click)="openDialog('AddDeposit')">Add Deposit</button>
+        </div>
+        <div class="col-md-3">
+          <button mat-raised-button color="primary" (click)="openDialog('AddDReferral')">Add Referral</button>
+        </div>
+      </div>   
+    </div>
+  </div>
+  <div class="col-md-2 panel">
+    <div class="chart">
+      <div class="chart-title">Logins</div>
+      <app-logins [value]="loginsCounter"></app-logins>
+    </div>
+  </div>
+  <div class="col-md-2 panel">
+    <div class="chart">
+      <div class="chart-title">Deposits</div>
+      <app-deposits [value]="depositsCounter"></app-deposits>
+    </div>
+  </div>
+  <div class="col-md-2 panel">
+    <div class="chart">
+      <div class="chart-title">Trades</div>
+      <app-trades [value]="tradesCounter"></app-trades>
+    </div>
+  </div>
+</div>
+<div class="row fade-in">
+  <div class="col-md-6 panel">
+    <div class="chart">
+      <div class="chart-title">Deposits Chart</div>
+      <app-deposits-chart></app-deposits-chart>
+    </div>
+  </div>
+  <div class="col-md-6 panel">
+    <div class="chart">
+      <div class="chart-title">Balance</div>
+      <app-balance></app-balance>
+    </div>
+  </div>
+</div>
