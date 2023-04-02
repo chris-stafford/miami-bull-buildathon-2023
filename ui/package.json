@@ -1,6 +1,7 @@
 {
   "name": "miami-bull-ui",
   "version": "1.0.0",
+  "homepage": "",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
