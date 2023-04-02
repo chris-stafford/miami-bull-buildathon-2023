@@ -1,6 +1,7 @@
 <div id="wrap">
   <div class="container-fluid main">
     <div class="row" *ngIf="authenticationService.isAuthenticated()">
+      <div class="col-md-justified-left welcome">Welcome AccountId: <b>{{jwtService.getToken()}}</b></div>
       <div class="col"></div>
       <div class="col-md-justified-right">
         <a id="btnLogout" (click)="logout()" class="btn btn-default"><fa-icon icon="sign-out-alt"></fa-icon> Logout</a>  

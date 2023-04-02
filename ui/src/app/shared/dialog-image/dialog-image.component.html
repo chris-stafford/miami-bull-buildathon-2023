@@ -1,0 +1,9 @@
+<b mat-dialog-title>{{config.title}}</b>
+<div mat-dialog-content>
+  <div class="imagePreview">
+    <img *ngIf="config.imageURI" [src]="config.imageURI" width="500px" height="500px">
+  </div>
+</div>
+<div mat-dialog-actions class="float-right">
+  <button mat-button (click)="onCancelClick()"  class="btn btn-sm btn-secondary">{{config.cancelText}}</button>
+</div>

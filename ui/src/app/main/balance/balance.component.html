@@ -1,6 +1,8 @@
-<ngx-charts-pie-grid    
-[view]="view"
-[scheme]="colorScheme"
-[results]="data"
-(select)="onSelect($event)">
-</ngx-charts-pie-grid>
+<ngx-charts-linear-gauge
+  [view]="view"
+  [scheme]="colorScheme"
+  [value]="value"
+  [previousValue]="previousValue"
+  (select)="onSelect($event)"
+  [units]="units">
+</ngx-charts-linear-gauge>

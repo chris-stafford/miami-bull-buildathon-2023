@@ -14,12 +14,13 @@ import { NgxSpinnerService } from 'ngx-spinner';
 export class AppComponent implements OnInit {
   title = 'MiamiBull';
   environment = environment;
+  accountId = '';
 
   constructor(public authenticationService: AuthenticationService,
               private router:Router, 
               private location: Location,
               private spinnerService: NgxSpinnerService,
-              private jwtService: JwtService) {
+              public jwtService: JwtService) {
   }
 
   ngOnInit(){

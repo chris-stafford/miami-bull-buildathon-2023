@@ -1,28 +1,46 @@
-<div *ngIf="showLoginDetails">
+<div *ngIf="showLoginDetails" class="content">
     <br/>
     <h2 class="text-center">Please enter a Wallet Address</h2>
     <br/>    
     
     <div class="row">
         <div class="col-12 text-center">
-            <mat-form-field color="primary"  appearance="outline">
-            <mat-label>Wallet Address </mat-label>
-            <input matInput id="walletAddressFromControl" name="walletAddressFromControl" 
-            [formControl]="walletAddressFromControl"  type="text" maxlength="50" autocomplete="off" 
-            (change)="onWalletAddressChange()">
-
+            <mat-form-field appearance="fill">
+            <mat-label>Choose an account</mat-label>
+            <mat-select id="walletAddressFromControl" name="walletAddressFromControl" 
+            [formControl]="walletAddressFromControl"  
+            (selectionChange)="onWalletAddressChange()">
+                <mat-option *ngFor="let account of accountsForLogin" [value]="account">{{account}}</mat-option>
+            </mat-select>
             <mat-error *ngIf="walletAddressFromControl.hasError('required')">
-                Please enter a wallet address
+                Please select a wallet address
             </mat-error>
-            <!-- <mat-error *ngIf="walletAddressFromControl.hasError('pattern')">
-                Field must be a <strong> whole number</strong>
-            </mat-error> -->
-            </mat-form-field> 
+            </mat-form-field>
         </div>
     </div>
     <div class="row">
         <div class="col-12 text-center">
-            <button mat-stroked-button color="primary" (click)="login()">Sign In</button>
+            <mat-slide-toggle [formControl]="referralChecked" (change)="onReferralCheckChange($event)"> I was referred</mat-slide-toggle>
+        </div>
+    </div>
+    <div class="row" *ngIf="referralCheckedValue">
+        <div class="col-12 text-center">
+            <mat-form-field appearance="fill">
+            <mat-label>Choose Referred by Account</mat-label>
+            <mat-select id="referralWalletAddressFormControl" name="referralWalletAddressFormControl" 
+            [formControl]="referralWalletAddressFormControl"  
+            (selectionChange)="onReferralWalletAddressChange()">
+                <mat-option *ngFor="let account of accountsForLogin" [value]="account">{{account}}</mat-option>
+            </mat-select>
+            <mat-error *ngIf="referralWalletAddressFormControl.hasError('required')">
+                Please select a referred by account vaue
+            </mat-error>
+            </mat-form-field>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-12 text-center">
+            <button mat-stroked-button color="primary" [disabled]="!isValidForm()" (click)="login()">Sign In</button>
         </div>
     </div>
 </div>

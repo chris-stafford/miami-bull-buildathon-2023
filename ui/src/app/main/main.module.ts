@@ -32,17 +32,17 @@ import { LogsComponent } from './shared/dialog/dialog-logs/logs.componen';
 import {MatProgressBarModule} from '@angular/material/progress-bar';
 import { NgxChartsModule } from '@swimlane/ngx-charts';
 import { BalanceComponent } from './balance/balance.component';
-import { DepositsChartComponent } from './deposits-chart/deposits-chart.component';
 import { TradesComponent } from './trades/trades.component';
 import { LoginsComponent } from './logins/logins.component';
 import { DepositsComponent } from './deposits/deposits.component';
+import { AchievementsComponent } from './achievements/achievements.component';
 
 @NgModule({
   declarations: [
     DashboardComponent,
     BalanceComponent,
     DepositsComponent,
-    DepositsChartComponent,
+    AchievementsComponent,
     TradesComponent,
     LoginsComponent,
     LogsComponent,

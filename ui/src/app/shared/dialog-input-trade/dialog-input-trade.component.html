@@ -1,0 +1,18 @@
+<b mat-dialog-title>{{config.title}}</b>
+<div mat-dialog-content>
+  <p [innerHTML]="config.text"></p>
+  <mat-form-field *ngIf="config.inputEnabled" class="tp-full-width"  appearance="outline">
+    <mat-label>Amount</mat-label>
+    <input matInput type="number" maxlength="{{config.maxInputLength}}" [(ngModel)]="inputAmountValue">
+    <mat-hint align="end">{{inputAmountValue.length}} / {{config.maxInputLength}}</mat-hint>
+  </mat-form-field>
+  <mat-form-field *ngIf="config.inputEnabled" class="tp-full-width"  appearance="outline">
+    <mat-label>Currency</mat-label>
+    <input matInput maxlength="{{config.maxInputLength}}" [(ngModel)]="inputCurrencyValue">
+    <mat-hint align="end">{{inputCurrencyValue.length}} / {{config.maxInputLength}}</mat-hint>
+  </mat-form-field>
+</div>
+<div mat-dialog-actions class="float-right">
+  <button mat-button (click)="onCancelClick()"  class="btn btn-sm btn-secondary" [hidden]="config.isAlertDialog">{{config.cancelText}}</button>
+  <button mat-button (click)="onConfirmClick()" class="btn btn-sm btn-primary" [disabled]="!isValidForm()">{{config.confirmText}}</button>
+</div>

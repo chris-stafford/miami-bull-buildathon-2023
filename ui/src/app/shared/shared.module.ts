@@ -18,6 +18,9 @@ import { DateTimeHelper } from './dateTime.helper';
 import { CounterDirective } from './counter.directive';
 import { BlockCopyPasteDirective } from './block-copy-paste.directive';
 import { AlertMessageService } from './alertMessage.service';
+import { DialogInputTradeComponent } from './dialog-input-trade/dialog-input-trade.component';
+import { DialogImageComponent } from './dialog-image/dialog-image.component';
+import { DialogSelectComponent } from './dialog-select/dialog-select.component';
 
 @NgModule({
   imports: [
@@ -38,8 +41,8 @@ import { AlertMessageService } from './alertMessage.service';
     DateTimeHelper,
     AlertMessageService
   ],
-  declarations: [SpinnerComponent, DatepickerInputComponent, DialogInputComponent, CounterDirective, BlockCopyPasteDirective],
-  exports: [SpinnerComponent, DatepickerInputComponent, DialogInputComponent, MatDatepickerModule, MatFormFieldModule, MatInputModule, CounterDirective, BlockCopyPasteDirective],
-  bootstrap: [SpinnerComponent, DatepickerInputComponent, DialogInputComponent ]
+  declarations: [SpinnerComponent, DatepickerInputComponent, DialogInputComponent, DialogSelectComponent, DialogImageComponent, DialogInputTradeComponent, CounterDirective, BlockCopyPasteDirective],
+  exports: [SpinnerComponent, DatepickerInputComponent, DialogInputComponent,DialogSelectComponent, DialogImageComponent, DialogInputTradeComponent, MatDatepickerModule, MatFormFieldModule, MatInputModule, CounterDirective, BlockCopyPasteDirective],
+  bootstrap: [SpinnerComponent, DatepickerInputComponent, DialogInputComponent, DialogSelectComponent, DialogImageComponent, DialogInputTradeComponent ]
 })
 export class SharedModule {}

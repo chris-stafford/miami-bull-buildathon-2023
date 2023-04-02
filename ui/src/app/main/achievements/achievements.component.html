@@ -1,0 +1,17 @@
+<mat-list>
+  <mat-list-item *ngFor="let achievement of achievementsAvailable" >
+    <b>{{web3Service.getAchievementName(achievement)}}</b>
+    <div *ngIf="isAchievementIssued(achievement)">
+      <div class="imagePreview">
+        <img *ngIf="getAchievementURI(achievement)" [src]="getAchievementURI(achievement)" width="30px" height="30px">
+      </div>
+      <button mat-button color="secondary" (click)="openDialog(achievement)" class="btnPreview">Preview
+        <mat-icon>search</mat-icon>
+      </button>
+    </div>
+    <div *ngIf="!isAchievementIssued(achievement)">
+      <button mat-button color="primary" (click)="mint(achievement)">Mint</button>
+    </div>
+  </mat-list-item>
+ </mat-list>
+

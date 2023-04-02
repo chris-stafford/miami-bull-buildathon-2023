@@ -10,7 +10,7 @@ import * as _ from "lodash";
 export class LoginsComponent implements OnInit {
   sub: Subscription;
   single: any[];
-  view: any[] = [200, 200];
+  view: any[] = [150, 150];
   colorScheme = {
     domain: ['#5AA454', '#E44D25', '#CFC0BB', '#7aa3e5', '#a8385d', '#aae3f5']
   };

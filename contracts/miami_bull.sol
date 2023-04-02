@@ -43,20 +43,20 @@ contract MiamiBull is ERC721URIStorage
     constructor() public ERC721("MiamiBull", "MBLL") {
 
         // unfinished - update these when images are ready
-        _nftURIs[Achievement.LOGIN_ACHIEVEMENT] = "bafybeiccfibseku6cykosr3gcqiuudvqeoycakpkrcxh4g5sy2zzrqzazq";
-        _nftURIs[Achievement.TRADE_ACHIEVEMENT_1] = "bafybeiccfibseku6cykosr3gcqiuudvqeoycakpkrcxh4g5sy2zzrqzazq";
-        _nftURIs[Achievement.TRADE_ACHIEVEMENT_2] = "bafybeiccfibseku6cykosr3gcqiuudvqeoycakpkrcxh4g5sy2zzrqzazq";
-        _nftURIs[Achievement.TRADE_ACHIEVEMENT_3] = "bafybeiccfibseku6cykosr3gcqiuudvqeoycakpkrcxh4g5sy2zzrqzazq";
-        _nftURIs[Achievement.GAINS_ACHIEVEMENT_1] = "bafybeiccfibseku6cykosr3gcqiuudvqeoycakpkrcxh4g5sy2zzrqzazq";
-        _nftURIs[Achievement.GAINS_ACHIEVEMENT_2] = "bafybeiccfibseku6cykosr3gcqiuudvqeoycakpkrcxh4g5sy2zzrqzazq";
-        _nftURIs[Achievement.GAINS_ACHIEVEMENT_3] = "bafybeiccfibseku6cykosr3gcqiuudvqeoycakpkrcxh4g5sy2zzrqzazq";
-        _nftURIs[Achievement.LOSS_ACHIEVEMENT_1] = "bafybeiccfibseku6cykosr3gcqiuudvqeoycakpkrcxh4g5sy2zzrqzazq";
-        _nftURIs[Achievement.LOSS_ACHIEVEMENT_2] = "bafybeiccfibseku6cykosr3gcqiuudvqeoycakpkrcxh4g5sy2zzrqzazq";
-        _nftURIs[Achievement.LOSS_ACHIEVEMENT_3] = "bafybeiccfibseku6cykosr3gcqiuudvqeoycakpkrcxh4g5sy2zzrqzazq";
-        _nftURIs[Achievement.DEPOSIT_ACHIEVEMENT_1] = "bafybeiccfibseku6cykosr3gcqiuudvqeoycakpkrcxh4g5sy2zzrqzazq";
-        _nftURIs[Achievement.DEPOSIT_ACHIEVEMENT_2] = "bafybeiccfibseku6cykosr3gcqiuudvqeoycakpkrcxh4g5sy2zzrqzazq";
-        _nftURIs[Achievement.DEPOSIT_ACHIEVEMENT_3] = "bafybeiccfibseku6cykosr3gcqiuudvqeoycakpkrcxh4g5sy2zzrqzazq";
-        _nftURIs[Achievement.REFERRAL_ACHIEVEMENT] = "bafybeiccfibseku6cykosr3gcqiuudvqeoycakpkrcxh4g5sy2zzrqzazq";
+        _nftURIs[Achievement.LOGIN_ACHIEVEMENT] = "bafybeid6kd7q6yv66lwxjv63suv632s46k2bzt3rycilgqlnaxzhwuwhjm";
+        _nftURIs[Achievement.TRADE_ACHIEVEMENT_1] = "bafybeidul35trei2avu4sqgji4b2ukoeuxdfndu6bto2fvwtewkhruz22e";
+        _nftURIs[Achievement.TRADE_ACHIEVEMENT_2] = "bafybeifheervovj2ztxixdkoix2yox26tn4ghjhev4m2mn5vqchwneb2zm";
+        _nftURIs[Achievement.TRADE_ACHIEVEMENT_3] = "bafybeihtwipqtinpx5asd5yydijtnmdxglndwesajc63mepjnih6j2tugm";
+        _nftURIs[Achievement.GAINS_ACHIEVEMENT_1] = "bafybeibbflmsr4udwxcg5fbliqqjjthegr4vcl754grdbimtnk36yz2bye";
+        _nftURIs[Achievement.GAINS_ACHIEVEMENT_2] = "bafybeibvukhj7t2kg3gyew43zgfeheqenxw4yk7uvscvjhhqxrbzh5t6am";
+        _nftURIs[Achievement.GAINS_ACHIEVEMENT_3] = "bafybeiczu5q2r2zt4beyfhub6xtm62gl3xumm54ifgd3h73qurx7bwdh5a";
+        _nftURIs[Achievement.LOSS_ACHIEVEMENT_1] = "bafybeieidqdmpgwmx3sjqi7z3xonfbtav5o7yu6sxgu6k4o5wwomdh3odm";
+        _nftURIs[Achievement.LOSS_ACHIEVEMENT_2] = "bafybeihie6i24hbrjweg7mivmpjwq2fxko4xfygxgkgjqjvjw34jgybk5a";
+        _nftURIs[Achievement.LOSS_ACHIEVEMENT_3] = "bafybeigx2dxo5abdj5yftc3grcbwtazpxio33m6uauip5zvnowfqyf4554";
+        _nftURIs[Achievement.DEPOSIT_ACHIEVEMENT_1] = "bafybeigg5jclh7ep4oorvv4dpkxj6t6civvyiwekzkijfu2phzjkq7c6oe";
+        _nftURIs[Achievement.DEPOSIT_ACHIEVEMENT_2] = "bafybeid5xq6gabunnvlh5doq2zhzrxg76hjvlfd3epsxcbjkhyn4fdjdaq";
+        _nftURIs[Achievement.DEPOSIT_ACHIEVEMENT_3] = "bafybeibuam4wcyoojt2hvfjn7o7op3z3d6j5rwz7c4n27aznd4dx332eji";
+        _nftURIs[Achievement.REFERRAL_ACHIEVEMENT] = "bafybeicjosv5ve2sqctnsviktlzvxt3u3nussgj3fcn2jbpssasiub7ly4";
     }
 
     using Counters for Counters.Counter;

@@ -37,6 +37,8 @@ interface DialogInputConfig{
     isAlertDialog?: boolean;
     inputEnabled?: boolean;
     maxInputLength?: number;
+    imageURI?: string;
+    options?: Array<string>;
 }
 
 interface DialogLogsConfig{
@@ -69,4 +71,23 @@ interface DashboardResponse {
     deposits: string;
     numLogins: string;
     numTrades: string;    
+}
+
+interface TradeDetails
+{
+  amount: string;
+  toDepositCurrency: boolean;
+}
+
+interface AchievementsIssued
+{
+    achievement: string;
+    nftTokenId: boolean;
+    tokenURI?: string;
+}
+
+interface Contract
+{
+    contractAddress: string;
+    accountId: string;
 }

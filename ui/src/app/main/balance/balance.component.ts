@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
 import * as _ from "lodash";
 
@@ -9,31 +9,19 @@ import * as _ from "lodash";
 })
 export class BalanceComponent implements OnInit {
   sub: Subscription;
-  data = [
-    {
-      "name": "Gains",
-      "value": 8940000
-    },
-    {
-      "name": "Losses",
-      "value": 5000000
-    },
-  ];
-  view: any[] = [350, 200];
-
-  // options
-  showLegend: boolean = true;
-  showLabels: boolean = true;
-
+  single: any[];
+  view: any[] = [150, 150];
   colorScheme = {
     domain: ['#5AA454', '#E44D25', '#CFC0BB', '#7aa3e5', '#a8385d', '#aae3f5']
   };
+  @Input() value: number = 0;
+  previousValue: number = 0;
+  units: string = 'Total';
 
   constructor() {}
 
   ngOnInit(){
   }
-
 
   onSelect(event) {
     console.log(event);

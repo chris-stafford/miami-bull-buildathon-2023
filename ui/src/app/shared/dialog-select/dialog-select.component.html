@@ -1,0 +1,14 @@
+<b mat-dialog-title>{{config.title}}</b>
+<div mat-dialog-content>
+  <p [innerHTML]="config.text"></p>
+  <mat-form-field *ngIf="config.inputEnabled" class="tp-full-width">
+      <mat-select id="walletAddressFromControl" name="walletAddressFromControl" 
+              [(ngModel)]="inputValue">
+          <mat-option *ngFor="let option of config.options" [value]="option">{{option}}</mat-option>
+      </mat-select>
+  </mat-form-field>
+</div>
+<div mat-dialog-actions class="float-right">
+  <button mat-button (click)="onCancelClick()"  class="btn btn-sm btn-secondary" [hidden]="config.isAlertDialog">{{config.cancelText}}</button>
+  <button mat-button (click)="onConfirmClick(inputValue)" class="btn btn-sm btn-primary" [disabled]="!isValidForm(inputValue)">{{config.confirmText}}</button>
+</div>

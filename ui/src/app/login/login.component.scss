@@ -1,16 +1,26 @@
 h2, span{
-    color: #ffffff;
+    color: #62624d;
 }
 span {
     font-size: 12px;
 }
 
 label {
-    color: #ffffff;
+    color: #62624d;
     font-weight: bolder;
     font-size: 15px;
 }
 
 body {
-    color: #ffffff;
+    color: #62624d;
+}
+.content{
+    border-radius: 10px;
+    margin-left: auto;
+    margin-right: auto;
+    background-color: #e2deb5;
+    width: 90%;
+    display: block;
+    margin-top: 100px !important;
+    padding: 50px;
 }

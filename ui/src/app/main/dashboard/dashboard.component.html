@@ -7,23 +7,26 @@
   </div>
 </div>
 <div class="row fade-in">
-  <div class="col-md-6 panel">
+  <div class="col-md-4 panel">
     <div class="chart">
       <div class="chart-title">Actions</div>    
       <div class="row">
-        <div class="col-md-3">
+        <div class="col-md-6">
           <button mat-raised-button color="primary" (click)="addLogin()">Add Login</button>
         </div>
-        <div class="col-md-3">
-          <button mat-raised-button color="primary">New Trade</button>
-        </div>
-        <div class="col-md-3">
-          <button mat-raised-button color="primary" (click)="openDialog('AddDeposit')">Add Deposit</button>
-        </div>
-        <div class="col-md-3">
-          <button mat-raised-button color="primary" (click)="openDialog('AddDReferral')">Add Referral</button>
+        <div class="col-md-6">
+          <button mat-raised-button color="primary" (click)="openDialog('AddTrade')">Add Trade</button>
         </div>
       </div>   
+      <br />
+      <div class="row">
+        <div class="col-md-6">
+          <button mat-raised-button color="primary" (click)="openDialog('AddDeposit')">Add Deposit</button>
+        </div>
+        <div class="col-md-6">
+          <button mat-raised-button color="primary" (click)="openDialog('AddReferral')">Add Referral</button>
+        </div>
+      </div>  
     </div>
   </div>
   <div class="col-md-2 panel">
@@ -44,18 +47,18 @@
       <app-trades [value]="tradesCounter"></app-trades>
     </div>
   </div>
-</div>
-<div class="row fade-in">
-  <div class="col-md-6 panel">
-    <div class="chart">
-      <div class="chart-title">Deposits Chart</div>
-      <app-deposits-chart></app-deposits-chart>
-    </div>
-  </div>
-  <div class="col-md-6 panel">
+  <div class="col-md-2 panel">
     <div class="chart">
       <div class="chart-title">Balance</div>
-      <app-balance></app-balance>
+      <app-balance [value]="balance"></app-balance>
+    </div>
+  </div>
+</div>
+<div class="row fade-in">
+  <div class="col-md-8 panel achievementsPanel">
+    <div class="chart">
+      <div class="chart-title">Achievements</div>
+      <app-achievements class="achievements" [achievementsAvailable]="achievementsAvailableToMint" [achievementsIssued]="achievementsIssued"  (onMint)="mint($event)"></app-achievements>
     </div>
   </div>
 </div>

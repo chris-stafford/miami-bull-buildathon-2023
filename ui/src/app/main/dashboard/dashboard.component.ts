@@ -11,6 +11,8 @@ import { DialogInputComponent } from 'src/app/shared/dialog-input/dialog-input.c
 import { MatDialog } from '@angular/material/dialog';
 import { FormControl, Validators } from '@angular/forms';
 import { Web3Service } from 'src/app/shared/web3.service';
+import { DialogInputTradeComponent } from 'src/app/shared/dialog-input-trade/dialog-input-trade.component';
+import { DialogSelectComponent } from 'src/app/shared/dialog-select/dialog-select.component';
 
 @Component({
   selector: 'app-dashboard',
@@ -22,9 +24,10 @@ export class DashboardComponent implements OnInit {
   tradesCounter = 0;
   loginsCounter = 0;
   depositsCounter = 0;
-  balance;
+  balance = 0;
   achievementsAvailableToMint: Array<any>;
-  achievementsIssued: Array<any>;
+  availableAccounts: Array<string> = [];
+  achievementsIssued: Array<AchievementsIssued>;
   sub: Subscription;
   data = [
     {
@@ -54,20 +57,25 @@ export class DashboardComponent implements OnInit {
               private dialog: MatDialog) {}
 
   ngOnInit(){
+    this.web3Service.getAccounts().then(accounts =>{
+        this.availableAccounts = accounts;
+      })
+      .catch(error => {
+        console.log(error);
+      });
     this.setDashboard();
     this.userWalletAddress = this.jwtService.getToken();
   }
 
   setDashboard() {
     this.web3Service.getDashboard().then((result: DashboardResponse) => {
-      debugger;
       this.loginsCounter = _.toInteger(result.numLogins);
       this.tradesCounter = _.toInteger(result.numTrades);
       this.depositsCounter = _.toInteger(result.deposits);
       this.balance = _.toInteger(result.balance);
       this.achievementsAvailableToMint = result.achievementsAvailableToMint;
       this.achievementsIssued = result.achievementsIssued;
-    }).catch(error => console.log(error));        
+    }).catch(error => this.alertMsgService.showErrorMessage(`Error on getting dashboard. Error: ${error}`));        
   }
 
   openDialog(event: string, width = '350px') {    
@@ -81,7 +89,9 @@ export class DashboardComponent implements OnInit {
           event: event,
           text: `Please enter the deposit amount`,
           isAlertDialog: false,
-          inputEnabled: true
+          inputEnabled: true,
+          cancelText: 'Cancel',
+          confirmText: 'Confirm'
         };
         dialogRef = this.dialog.open(DialogInputComponent, {
           width: width,
@@ -89,27 +99,32 @@ export class DashboardComponent implements OnInit {
           disableClose: true,
         }); 
         break;
-      case 'AddAchievement':
-        let dialogAddAchievementConfig: DialogInputConfig = {
+      case 'AddTrade':
+        let dialogAddTradeConfig: DialogInputConfig = {
           event: event,
-          text: `Please add the Achievement id`,
+          text: `Please enter the trade details`,
           isAlertDialog: false,
-          inputEnabled: true
+          inputEnabled: true,
+          cancelText: 'Cancel',
+          confirmText: 'Confirm'
         };
-        dialogRef = this.dialog.open(DialogInputComponent, {
+        dialogRef = this.dialog.open(DialogInputTradeComponent, {
           width: width,
-          data:dialogAddAchievementConfig,
-          disableClose: true,
-        });
+          data: dialogAddTradeConfig,
+          disableClose: true
+        }); 
         break;
       case 'AddReferral':
         let dialogAddReferralConfig: DialogInputConfig = {
           event: event,
-          text: `Please add the new Referral Account Address`,
+          text: `Please select the Referral Account Address`,
           isAlertDialog: false,
-          inputEnabled: true
+          inputEnabled: true,
+          options: this.availableAccounts,
+          cancelText: 'Cancel',
+          confirmText: 'Confirm'
         };
-        dialogRef = this.dialog.open(DialogInputComponent, {
+        dialogRef = this.dialog.open(DialogSelectComponent, {
           width: width,
           data:dialogAddReferralConfig,
           disableClose: true,
@@ -121,7 +136,6 @@ export class DashboardComponent implements OnInit {
     
  
     dialogRef.afterClosed().subscribe((result: any) => {
-      debugger;
       if(result){
         switch (event) {
           case 'AddDeposit':  
@@ -130,31 +144,55 @@ export class DashboardComponent implements OnInit {
           case 'AddAchievement':
             break;
           case 'AddReferral':
+            this.addReferral(result);
+            break;
+          case 'AddTrade':
+            this.addTrade(result);
             break;
         }    
       }
     });
   }
 
-
   addDeposit(depositAmount) {
     this.web3Service.recordNewDeposit(depositAmount).then(result => {
       this.depositsCounter += _.parseInt(depositAmount);
       this.alertMsgService.showSuccessMessage(`Deposit of ${depositAmount} added!`);
+      this.setDashboard();
     }).catch(error => this.alertMsgService.showErrorMessage(`Error adding deposit. Error: ${error}`));  
   }
-
-  addTrade(event) {
-    this.tradesCounter++;
+  addReferral(referralAddress){
+    this.web3Service.recordNewReferral(referralAddress).then(result => {
+      this.alertMsgService.showSuccessMessage(`New referral created for ${referralAddress}`);
+      this.setDashboard();
+    }).catch(error => this.alertMsgService.showErrorMessage(`Error adding referral. Error: ${error}`));  
   }
   addLogin(){
     this.web3Service.recordNewLogin(this.userWalletAddress).then(response => {
-      debugger;
       if(response.status){
         this.alertMsgService.showSuccessMessage(`New Login added for "${this.userWalletAddress}" address!`);
-        this.loginsCounter++;
+        this.setDashboard();
       }
-    }).catch(error => this.alertMsgService.showErrorMessage(`Error adding deposit. Error: ${error}`));
+    }).catch(error => this.alertMsgService.showErrorMessage(`Error adding login. Error: ${error}`));
+  }
+
+  addTrade(tradeDetails: TradeDetails) {
+    this.web3Service.recordNewTrade(tradeDetails.amount, tradeDetails.toDepositCurrency).then(response => {
+      if(response.status){
+        this.alertMsgService.showSuccessMessage(`New Trade added related to "${this.userWalletAddress}" address!`);
+        this.setDashboard();
+      }
+    }).catch(error => this.alertMsgService.showErrorMessage(`Error adding Trade. Error: ${error}`));
+  }
+
+
+  mint(achievementId) {
+    this.web3Service.mint(achievementId).then(response => {
+      if(response.status){
+        this.alertMsgService.showSuccessMessage(`Achievement ${achievementId} minted!`);
+        this.setDashboard();
+      }
+    }).catch(error => this.alertMsgService.showErrorMessage(`Error no mint. Error: ${error}`));
   }
 
   onSelect(event) {
